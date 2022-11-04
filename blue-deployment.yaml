@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-blue
+  template:
+    metadata:
+      labels:
+        app: webapp-blue
+    spec:
+      containers:
+      - name: webapp-blue
+        image: kodekloud/webapp-color:v3
+        env:
+        - name: APP_COLOR
+          value: "blue"

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  namespace: red
+  labels:
+    app: webapp-red
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-red
+  template:
+    metadata:
+      labels:
+        app: webapp-red
+    spec:
+      containers:
+      - name: webapp-red
+        image: kodekloud/webapp-color:v3
+        env:
+        - name: APP_COLOR
+          value: "red"
